@@ -3,21 +3,8 @@
     height: 100vh;
     overflow: auto;
     text-align: center;
-    font-family: monospace;
-    color: #315858;
+    color: #008686;
     background-color: #c1cdfa;
-}
-
-h1, h3 {
-    margin: 10px 0;
-}
-
-h1 {
-    font-size: 1.7rem; 
-}
-
-h3 {
-    font-size: 1.3rem;
 }
 
 button {
@@ -26,18 +13,6 @@ button {
 }
 
 @media only screen and (min-height: 400px) {
-    h1, h3 {
-        margin: 20px 0;
-    }
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    h3 {
-        font-size: 1.7rem;
-    }
-
     button {
         margin: 30px;
     }

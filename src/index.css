@@ -6,10 +6,14 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: firebrick;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  background-color: #cf5f5f;
+  font-family: monospace;
+  font-weight: 100;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
+
+/* #cf5f5f; */

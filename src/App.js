@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './Header';
 import Board from './Board';
 import Cell from './Cell';
 
@@ -7,17 +8,17 @@ class App extends Component {
     constructor () {
         super ();
         this.state = {
-            turn: 'X Player',
-            cells: [ 
-                {name: 'cell1', text: ''},
-                {name: 'cell2', text: ''},
-                {name: 'cell3', text: ''},
-                {name: 'cell4', text: ''},
-                {name: 'cell5', text: ''},
-                {name: 'cell6', text: ''},
-                {name: 'cell7', text: ''},
-                {name: 'cell8', text: ''},
-                {name: 'cell9', text: ''},
+            turn: 'X',
+            cells: [
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
             ]
         };
     };
@@ -25,7 +26,7 @@ class App extends Component {
     togglePlayer = (i) => {
         if (this.state.cells[i].text === '') {
             this.setState(state => {
-                return state.turn === 'X Player' ? state.turn = 'O Player' : state.turn = 'X Player';
+                return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
             });
         }
     };
@@ -35,7 +36,7 @@ class App extends Component {
         const cellText = this.state.cells[i].text;
         let val = '';
         if (cellText === '') {
-            val = currentPlayer === 'X Player' ? 'X' : 'O';
+            val = currentPlayer === 'X' ? 'X' : 'O';
         } else {
             val = cellText;
         }
@@ -55,50 +56,56 @@ class App extends Component {
     onClickCell = (i) => {
         this.changeCellValue(i);
         this.togglePlayer(i);
-    }
+    };
+
+    // checkForWin = () => {
+    //     const cells = this.state.cells;
+    //     let row = cells.slice(0, 3);
+    //     const equal = row.every(item => item.text === row[0].text && item.text !== '')
+    //     console.log(equal, this.state.turn)
+    // };
 
     resetBoard = () => {
         this.setState({
-            turn: 'X Player',
-            cells: [ 
-                {name: 'cell1', text: ''},
-                {name: 'cell2', text: ''},
-                {name: 'cell3', text: ''},
-                {name: 'cell4', text: ''},
-                {name: 'cell5', text: ''},
-                {name: 'cell6', text: ''},
-                {name: 'cell7', text: ''},
-                {name: 'cell8', text: ''},
-                {name: 'cell9', text: ''},
+            turn: 'X',
+            cells: [
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
+                {text: ''},
             ]
         });
     };
 
     componentDidMount () {
-        
+        // setInterval(this.checkForWin, 2000);
     }
 
     render () {
         return (
             <div className="App">
-                <h1>Tic Tac Toe</h1>
-                <h3>{this.state.turn}</h3>
+                <Header currentPlayer={this.state.turn} />
                 <Board>
                     {
                         this.state.cells.map((cell, i) => {
                             return (
                                 <Cell
-                                key={i} 
+                                key={i}
                                 id={i}
-                                cellContent={cell.text} 
+                                cellContent={cell.text}
                                 onClicking={() => this.onClickCell(i)}
                                 />
                             );
                         })
                     }
                 </Board>
-                <button 
-                type='button' 
+                <button
+                type='button'
                 onClick={this.resetBoard}
                 >
                     Reset Game!
