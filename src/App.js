@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
+import Button from './Button';
 import Board from './Board';
 import Cell from './Cell';
 
@@ -104,12 +105,7 @@ class App extends Component {
                         })
                     }
                 </Board>
-                <button
-                type='button'
-                onClick={this.resetBoard}
-                >
-                    Reset Game!
-                </button>
+                <Button click={this.resetBoard} />
             </div>
         )
     };

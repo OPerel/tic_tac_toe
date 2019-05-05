@@ -1,0 +1,23 @@
+button {
+    margin: 20px;
+    padding: 10px 40px;
+    background-color: #ff9c49;
+    border: none;
+    outline: none;
+    color: #242f21;
+    font-size: 1.3rem;
+    font-family: monospace;
+    transition: 0.3s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #053f43;
+    color: #81aaaa;
+}
+
+@media only screen and (min-height: 400px) {
+    button {
+        margin: 30px;
+    }
+}

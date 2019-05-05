@@ -6,14 +6,3 @@
     color: #008686;
     background-color: #c1cdfa;
 }
-
-button {
-    margin: 20px;
-    padding: 10px 40px;
-}
-
-@media only screen and (min-height: 400px) {
-    button {
-        margin: 30px;
-    }
-}
