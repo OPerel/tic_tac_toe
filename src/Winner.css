@@ -1,31 +1,44 @@
-.board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+.hide {
+    display: none;
+}
+
+.winner {
     margin: 0 auto;
     width: 80%;
     height: 40vh;
-    border: solid 2px #008686;
+    overflow: auto;
+    background-color: #a5caca;
+    border-radius: 5px;
     transition: 0.4s;
 }
 
+h2 {
+    margin-top: 40px;
+    font-size: 1.5rem;
+}
+
 @media only screen and (min-width: 640px) {
-    .board {
+    .winner {
         width: 55%;
         height: 56vh;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    .board {
+    .winner {
         width: 50%;
         height: 56vh;
+    }
+
+    h2 {
+        margin-top: 70px;
+        font-size: 2rem;
     }
 }
 
 @media only screen and (min-width: 1224px) {
-    .board {
+    .winner {
         width: 45%;
-        height: 60vh;
+        height: 56vh;
     }
 }

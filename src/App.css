@@ -6,3 +6,7 @@
     color: #008686;
     background-color: #c1cdfa;
 }
+
+.hide {
+    display: none;
+}

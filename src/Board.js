@@ -3,7 +3,7 @@ import './Board.css';
 
 const Board = (props) => {
     return (
-        <div className='board'>   
+        <div id="b" className='board'>   
             {props.children}
         </div>
     )
