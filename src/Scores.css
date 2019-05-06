@@ -1,6 +1,6 @@
 .scores {
-    display: inline-block;
-    margin: 0 0 20px 0;
+    /* display: inline-block; */
+    /* margin: 0 0 20px 0; */
     font-size: 1.3rem;
 }
 
@@ -9,7 +9,7 @@
     /* margin: 0 5px; */
     min-width: 25px;
     height: 25px;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     border-radius: 3px;
     font-family: monospace;
     background-color: #a5caca;
