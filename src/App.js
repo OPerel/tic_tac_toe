@@ -54,6 +54,7 @@ class App extends Component {
             });
             return cell;
         });
+        // this.checkForWin();
     };
 
     onClickCell = (i) => {
@@ -61,21 +62,28 @@ class App extends Component {
         this.togglePlayer(i);
     };
 
-    checkRowWin = () => {
+    // WHERE TO CALL checkForWin ???
+    checkForWin = () => {
         const cells = this.state.cells;
-
-        let row1 = cells.slice(0, 3);
-        const equal1 = row1.every(item => item.text === row1[0].text && item.text !== '')
-
-        let row2 = cells.slice(3, 6);
-        const equal2 = row2.every(item => item.text === row2[0].text && item.text !== '')
-
-        let row3 = cells.slice(6, 9);
-        const equal3 = row3.every(item => item.text === row3[0].text && item.text !== '')
-
-        if (equal1 || equal2 || equal3) {
-            this.announceWinner();
-        };
+        // console.log(cells);
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+        lines.forEach(line => {
+            let [a, b, c] = line;
+            // console.log(a, cells[a].text, b, cells[b].text, c, cells[c].text);
+            if (cells[a].text === cells[b].text && cells[a].text === cells[c].text && cells[a].text !== "") {
+                console.log('win');
+                this.announceWinner();
+            };
+        });
     };
 
     announceWinner = () => {
