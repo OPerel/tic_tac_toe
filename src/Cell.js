@@ -1,11 +1,11 @@
 import React from 'react';
 import './Cell.css';
 
-const Cell = ({ id, cellContent, onClicking }) => {
+const Cell = ({ num, cellContent, onClicking }) => {
     return (
-        <div 
+        <div
         className='cell'
-        onClick={(e) => onClicking(id)}
+        onClick={() => onClicking(num)}
         >
             <p>{cellContent}</p>
         </div>

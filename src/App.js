@@ -13,16 +13,11 @@ class App extends Component {
         this.state = {
             turn: 'X',
             score: {xScore: 0, oScore: 0},
+            winner: null,
             cells: [
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
-                {text: ''},
+                '', '', '',
+                '', '', '',
+                '', '', ''
             ]
         };
     };
@@ -35,26 +30,10 @@ class App extends Component {
 
     changeCellValue = (i) => {
         const con = this.state.turn;
-        this.setState(state => {
-            let cell = state.cells.map((cell, j) => {
-                return i === j ? cell.text = con : cell.text;
-            });
-            return cell;
-        });
-        // this.checkForWin();
-    };
+        let currentBoard = this.state.cells;
+        currentBoard.splice(i, 1, con);
+        this.setState({ cells: currentBoard })
 
-    onClickCell = (i) => {
-        if (this.state.cells[i].text === '') {
-            this.changeCellValue(i);
-            this.togglePlayer(i);
-        }
-    };
-
-    // WHERE TO CALL checkForWin ???
-    checkForWin = () => {
-        const cells = this.state.cells;
-        // console.log(cells);
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -65,52 +44,52 @@ class App extends Component {
             [0, 4, 8],
             [2, 4, 6]
         ];
+        const cells = this.state.cells;
         lines.forEach(line => {
             let [a, b, c] = line;
-            // console.log(a, cells[a].text, b, cells[b].text, c, cells[c].text);
-            if (cells[a].text === cells[b].text && cells[a].text === cells[c].text && cells[a].text !== "") {
-                console.log('win');
+            if (cells[a] === cells[b] && cells[a] === cells[c] && cells[a] !== "") {
+                this.updateScores()
                 this.announceWinner();
             };
         });
     };
 
+    onClickCell = (i) => {
+        if (this.state.cells[i] === '') {
+            this.changeCellValue(i);
+            this.togglePlayer(i);
+        };
+    };
+
     announceWinner = () => {
-        const announce = document.getElementById('w');
-        const board = document.getElementById('b');
-        this.updateScores();
-        board.classList.add('hide');
-        announce.classList.remove('hide');
-    }
+        this.setState(state => {
+            return state.winner = state.turn;
+        });
+    };
 
     updateScores = () => {
-        const winner = this.state.turn === 'X' ? 'O' : 'X';
+        const winner = this.state.turn;
         if (winner === 'X') {
-            this.setState(state => state.score.xScore++);
+            this.setState(state => state.score.xScore += 1);
         } else {
-            this.setState(state => state.score.oScore++);
-        }
-    }
+            this.setState(state => state.score.oScore += 1);
+        };
+    };
 
     clearBoard = () => {
         this.setState(
             {
                 turn: 'X',
                 cells: [
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
+                    '', '', '',
+                    '', '', '',
+                    '', '', ''
                 ]
             }
         );
         document.getElementById('b').classList.remove('hide');
         document.getElementById('w').classList.add('hide');
+        this.setState({ winner: null })
     };
 
     resetBoard = () => {
@@ -119,42 +98,38 @@ class App extends Component {
                 turn: 'X',
                 score: {xScore: 0, oScore: 0},
                 cells: [
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
-                    {text: ''},
+                    '', '', '',
+                    '', '', '',
+                    '', '', ''
                 ]
             }
         );
         document.getElementById('b').classList.remove('hide');
         document.getElementById('w').classList.add('hide');
+        this.setState({ winner: null })
     };
 
     render () {
-        const winner = this.state.turn === 'X' ? 'O' : 'X';
+        const cells = this.state.cells;
         return (
             <div className="App">
                 <Header currentPlayer={this.state.turn} score={this.state.score} />
-                <Board>
+                <Board winner={this.state.winner}>
                     {
-                        this.state.cells.map((cell, i) => {
+                        cells.map((cell, i) => {
+                            console.log("cell", cell);
                             return (
                                 <Cell
                                 key={i}
-                                id={i}
-                                cellContent={cell.text}
+                                num={i}
+                                cellContent={cell}
                                 onClicking={() => this.onClickCell(i)}
                                 />
                             );
                         })
                     }
                 </Board>
-                <Winner click={this.clearBoard} winner={winner} buttonText="Play Again" />
+                <Winner click={this.clearBoard} winner={this.state.winner} buttonText="Play Again" />
                 <Button click={this.resetBoard} text="Reset Game!" />
             </div>
         )

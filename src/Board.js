@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Board.css';
 
-class Board extends Component {
-    render () {
-        return (
-            <div id="b" className='board'>
-                {this.props.children}
-            </div>
-        );
-    };
+const Board = (props) => {
+    return (
+        <div id="b" className={props.winner ? "hide board" : "board"}>
+            {props.children}
+        </div>
+    );
 };
 
 export default Board;
