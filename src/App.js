@@ -28,29 +28,27 @@ class App extends Component {
     };
 
     togglePlayer = (i) => {
-        if (this.state.cells[i].text === '') {
-            this.setState(state => {
-                return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
-            });
-        };
+        this.setState(state => {
+            return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
+        });
     };
 
     changeCellValue = (i) => {
-        if (this.state.cells[i].text === '') {
-            const con = this.state.turn;
-            this.setState(state => {
-                let cell = state.cells.map((cell, j) => {
-                    return i === j ? cell.text = con : cell.text;
-                });
-                return cell;
+        const con = this.state.turn;
+        this.setState(state => {
+            let cell = state.cells.map((cell, j) => {
+                return i === j ? cell.text = con : cell.text;
             });
-            // this.checkForWin();
-        }
+            return cell;
+        });
+        // this.checkForWin();
     };
 
     onClickCell = (i) => {
-        this.changeCellValue(i);
-        this.togglePlayer(i);
+        if (this.state.cells[i].text === '') {
+            this.changeCellValue(i);
+            this.togglePlayer(i);
+        }
     };
 
     // WHERE TO CALL checkForWin ???
