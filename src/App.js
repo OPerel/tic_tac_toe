@@ -70,9 +70,7 @@ class App extends Component {
     };
 
     announceWinner = () => {
-        this.setState(state => {
-            return state.winner = state.turn;
-        });
+        this.setState(state => state.winner = state.turn);
     };
 
     updateScores = () => {
