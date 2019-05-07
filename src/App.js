@@ -29,13 +29,17 @@ class App extends Component {
     };
 
     changeCellValue = (i) => {
-        const cells = this.state.cells;
         const con = this.state.turn;
 
         let currentBoard = this.state.cells;
         currentBoard.splice(i, 1, con);
         this.setState({ cells: currentBoard })
 
+        this.checkForWin();
+    };
+
+    checkForWin = () => {
+        const cells = this.state.cells;
         const lines = [
             [0, 1, 2],
             [3, 4, 5],
@@ -55,7 +59,7 @@ class App extends Component {
         });
         if (cells.every(cell => cell !== '')) {
             this.setState({ winner: 'Tie! No'})
-        }
+        };
     };
 
     onClickCell = (i) => {
