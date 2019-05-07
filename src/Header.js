@@ -8,7 +8,7 @@ const Header = ({ currentPlayer, score }) => {
             <h1>Tic Tac Toe</h1>
             <div className="player-score">
                 <h3><span>{currentPlayer}</span> Player</h3>
-                <Scores xScore={score.xScore} yScore={score.yScore} />
+                <Scores xScore={score.xScore} oScore={score.oScore} />
             </div>
         </div>
     );

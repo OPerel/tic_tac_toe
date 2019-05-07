@@ -11,7 +11,7 @@ class App extends Component {
         super ();
         this.state = {
             turn: 'X',
-            score: {xScore: 0, yScore: 0},
+            score: {xScore: 0, oScore: 0},
             cells: [
                 {text: ''},
                 {text: ''},
@@ -54,12 +54,10 @@ class App extends Component {
             });
             return cell;
         });
-        // this.checkRowWin();
     };
 
     onClickCell = (i) => {
         this.changeCellValue(i);
-        // this.checkRowWin();
         this.togglePlayer(i);
     };
 
@@ -93,7 +91,7 @@ class App extends Component {
         if (winner === 'X') {
             this.setState(state => state.score.xScore++);
         } else {
-            this.setState(state => state.score.yScore++);
+            this.setState(state => state.score.oScore++);
         }
     }
 
@@ -122,7 +120,7 @@ class App extends Component {
         this.setState(
             {
                 turn: 'X',
-                score: {xScore: 0, yScore: 0},
+                score: {xScore: 0, oScore: 0},
                 cells: [
                     {text: ''},
                     {text: ''},
