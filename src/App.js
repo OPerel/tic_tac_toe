@@ -22,15 +22,14 @@ class App extends Component {
         };
     };
 
-    togglePlayer = (i) => {
+    togglePlayer (i) {
         this.setState(state => {
             return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
         });
     };
 
-    changeCellValue = (i) => {
+    changeCellValue (i) {
         const con = this.state.turn;
-
         let currentBoard = this.state.cells;
         currentBoard.splice(i, 1, con);
         this.setState({ cells: currentBoard })
@@ -38,7 +37,14 @@ class App extends Component {
         this.checkForWin();
     };
 
-    checkForWin = () => {
+    onClickCell (i) {
+        if (this.state.cells[i] === '') {
+            this.changeCellValue(i);
+            this.togglePlayer(i);
+        };
+    };
+
+    checkForWin () {
         const cells = this.state.cells;
         const lines = [
             [0, 1, 2],
@@ -55,25 +61,24 @@ class App extends Component {
             if (cells[a] === cells[b] && cells[a] === cells[c] && cells[a] !== "") {
                 this.updateScores()
                 this.announceWinner();
+                return;
             };
         });
-        if (cells.every(cell => cell !== '')) {
+        this.checkTie();
+    };
+
+    checkTie () {
+        // Not working for a win in the last move.
+        if (this.state.cells.every(cell => cell !== '')) {
             this.setState({ winner: 'Tie! No'})
         };
     };
 
-    onClickCell = (i) => {
-        if (this.state.cells[i] === '') {
-            this.changeCellValue(i);
-            this.togglePlayer(i);
-        };
-    };
-
-    announceWinner = () => {
+    announceWinner () {
         this.setState(state => state.winner = state.turn);
     };
 
-    updateScores = () => {
+    updateScores () {
         const winner = this.state.turn;
         if (winner === 'X') {
             this.setState(state => state.score.xScore += 1);
@@ -82,7 +87,7 @@ class App extends Component {
         };
     };
 
-    clearBoard = () => {
+    clearBoard () {
         this.setState(
             {
                 turn: 'X',
@@ -98,7 +103,7 @@ class App extends Component {
         this.setState({ winner: null })
     };
 
-    resetBoard = () => {
+    resetBoard () {
         this.setState(
             {
                 turn: 'X',
@@ -134,8 +139,8 @@ class App extends Component {
                         })
                     }
                 </Board>
-                <Winner click={this.clearBoard} winner={this.state.winner} buttonText="Play Again" />
-                <Button click={this.resetBoard} text="Reset Game!" />
+                <Winner click={this.clearBoard.bind(this)} winner={this.state.winner} buttonText="Play Again" />
+                <Button click={this.resetBoard.bind(this)} text="Reset Game!" />
             </div>
         )
     };
