@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import Header from './Header';
 import Button from './Button';
 import Board from './Board';
@@ -34,27 +35,17 @@ class App extends Component {
         };
     };
 
-    getCellValue = (i) => {
-        const currentPlayer = this.state.turn;
-        const cellText = this.state.cells[i].text;
-        let val = '';
-        if (cellText === '') {
-            val = currentPlayer === 'X' ? 'X' : 'O';
-        } else {
-            val = cellText;
-        }
-        return val;
-    }
-
     changeCellValue = (i) => {
-        const con = this.getCellValue(i);
-        this.setState(state => {
-            let cell = state.cells.map((cell, j) => {
-                return i === j ? cell.text = con : cell.text;
+        if (this.state.cells[i].text === '') {
+            const con = this.state.turn;
+            this.setState(state => {
+                let cell = state.cells.map((cell, j) => {
+                    return i === j ? cell.text = con : cell.text;
+                });
+                return cell;
             });
-            return cell;
-        });
-        // this.checkForWin();
+            // this.checkForWin();
+        }
     };
 
     onClickCell = (i) => {
