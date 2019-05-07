@@ -6,11 +6,10 @@
 
 .score {
     display: inline-block;
-    /* margin: 0 5px; */
     min-width: 25px;
     height: 25px;
-    /* vertical-align: middle; */
     border-radius: 3px;
     font-family: monospace;
     background-color: #a5caca;
+    color: #053f43;
 }

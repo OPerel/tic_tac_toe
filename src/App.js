@@ -29,7 +29,9 @@ class App extends Component {
     };
 
     changeCellValue = (i) => {
+        const cells = this.state.cells;
         const con = this.state.turn;
+
         let currentBoard = this.state.cells;
         currentBoard.splice(i, 1, con);
         this.setState({ cells: currentBoard })
@@ -44,7 +46,6 @@ class App extends Component {
             [0, 4, 8],
             [2, 4, 6]
         ];
-        const cells = this.state.cells;
         lines.forEach(line => {
             let [a, b, c] = line;
             if (cells[a] === cells[b] && cells[a] === cells[c] && cells[a] !== "") {
@@ -52,6 +53,9 @@ class App extends Component {
                 this.announceWinner();
             };
         });
+        if (cells.every(cell => cell !== '')) {
+            this.setState({ winner: 'Tie! No'})
+        }
     };
 
     onClickCell = (i) => {
@@ -117,7 +121,6 @@ class App extends Component {
                 <Board winner={this.state.winner}>
                     {
                         cells.map((cell, i) => {
-                            console.log("cell", cell);
                             return (
                                 <Cell
                                 key={i}
