@@ -80,11 +80,12 @@ class App extends Component {
 
     updateScores () {
         const winner = this.state.turn;
-        if (winner === 'X') {
-            this.setState(state => state.score.xScore += 1);
-        } else {
-            this.setState(state => state.score.oScore += 1);
-        };
+        this.setState(state => winner === 'X' ? state.score.xScore += 1 : state.score.oScore += 1);
+        // if (winner === 'X') {
+        //     this.setState(state => state.score.xScore += 1);
+        // } else {
+        //     this.setState(state => state.score.oScore += 1);
+        // };
     };
 
     clearBoard () {
