@@ -22,7 +22,7 @@ class App extends Component {
         };
     };
 
-    togglePlayer (i) {
+    togglePlayer () {
         this.setState(state => {
             return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
         });
@@ -40,7 +40,7 @@ class App extends Component {
     onClickCell (i) {
         if (this.state.cells[i] === '') {
             this.changeCellValue(i);
-            this.togglePlayer(i);
+            this.togglePlayer();
         };
     };
 
@@ -81,11 +81,6 @@ class App extends Component {
     updateScores () {
         const winner = this.state.turn;
         this.setState(state => winner === 'X' ? state.score.xScore += 1 : state.score.oScore += 1);
-        // if (winner === 'X') {
-        //     this.setState(state => state.score.xScore += 1);
-        // } else {
-        //     this.setState(state => state.score.oScore += 1);
-        // };
     };
 
     clearBoard () {
