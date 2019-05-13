@@ -22,10 +22,13 @@ class App extends Component {
         };
     };
 
-    togglePlayer () {
-        this.setState(state => {
-            return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
-        });
+    onClickCell (i) {
+        if (this.state.cells[i] === '') {
+            this.changeCellValue(i);
+            this.checkForWin();
+            this.checkTie();
+            this.togglePlayer();
+        };
     };
 
     changeCellValue (i) {
@@ -33,15 +36,6 @@ class App extends Component {
         let currentBoard = this.state.cells;
         currentBoard.splice(i, 1, con);
         this.setState({ cells: currentBoard })
-
-        this.checkForWin();
-    };
-
-    onClickCell (i) {
-        if (this.state.cells[i] === '') {
-            this.changeCellValue(i);
-            this.togglePlayer();
-        };
     };
 
     checkForWin () {
@@ -64,18 +58,23 @@ class App extends Component {
                 return;
             };
         });
-        this.checkTie();
     };
 
     checkTie () {
         // Not working for a win in the last move.
-        if (this.state.cells.every(cell => cell !== '')) {
+        if (this.state.winner === null && this.state.cells.every(cell => cell !== '')) {
             this.setState({ winner: 'Tie! No'})
         };
     };
 
+    togglePlayer () {
+        this.setState(state => {
+            return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
+        });
+    };
+
     announceWinner () {
-        this.setState(state => state.winner = state.turn);
+        this.setState({winner: this.state.turn});
     };
 
     updateScores () {
@@ -87,6 +86,7 @@ class App extends Component {
         this.setState(
             {
                 turn: 'X',
+                winner: null,
                 cells: [
                     '', '', '',
                     '', '', '',
@@ -96,7 +96,6 @@ class App extends Component {
         );
         document.getElementById('b').classList.remove('hide');
         document.getElementById('w').classList.add('hide');
-        this.setState({ winner: null })
     };
 
     resetBoard () {
@@ -104,6 +103,7 @@ class App extends Component {
             {
                 turn: 'X',
                 score: {xScore: 0, oScore: 0},
+                winner: null,
                 cells: [
                     '', '', '',
                     '', '', '',
@@ -113,7 +113,6 @@ class App extends Component {
         );
         document.getElementById('b').classList.remove('hide');
         document.getElementById('w').classList.add('hide');
-        this.setState({ winner: null })
     };
 
     render () {
