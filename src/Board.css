@@ -9,12 +9,11 @@
     margin: 0 auto;
     width: 80%;
     height: 40vh;
-    border: solid 2px #008686;
     transition: 0.4s;
-    /* background-image: url('./img/tic.jpg');
+    background-image: url('./img/board.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center; */
+    background-size: cover;
+    background-position: center;
 }
 
 @media only screen and (min-width: 500px) {
