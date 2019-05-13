@@ -8,18 +8,18 @@ p {
     font-size: 1.5rem;
 }
 
-@media only screen and (min-height: 361px) {
+@media only screen and (min-height: 361px) and (min-width: 400px) {
     p {
         font-size: 2.5rem;
     }
 }
 
-@media only screen and (min-height: 641px) {
+@media only screen and (min-height: 641px) and (min-width: 600px) {
     .cell {
         border: solid 1px #008686;
     }
 
     p {
-        font-size: 3.3rem;
+        font-size: 3rem;
     }
 }
