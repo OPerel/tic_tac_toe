@@ -1,10 +1,12 @@
 p {
-    margin: 12%;
+    margin: 0;
     font-family: 'Caveat', cursive;
     font-size: 1.5rem;
 }
 
 .cell {
+    display: grid;
+    align-items: center;
     border-right: solid 1.5px #008686;
     border-bottom: solid 1.5px #008686;
 }
