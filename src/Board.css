@@ -9,11 +9,10 @@
     margin: 0 auto;
     width: 80%;
     height: 40vh;
-    transition: 0.4s;
-    background-image: url('./img/board.jpg');
+    /* background-image: url('./img/board.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
 }
 
 @media only screen and (min-width: 500px) {
