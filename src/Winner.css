@@ -17,10 +17,24 @@ h2 {
     font-size: 1.5rem;
 }
 
+@media only screen and (min-width: 500px) {
+    .winner {
+        width: 65%;
+        height: 45vh;
+    }
+}
+
 @media only screen and (min-width: 640px) {
     .winner {
         width: 55%;
-        height: 56vh;
+        height: 50vh;
+    }
+}
+
+@media only screen and (min-width:700px) {
+    .winner {
+        width: 55%;
+        height: 50vh;
     }
 }
 
@@ -29,16 +43,11 @@ h2 {
         width: 50%;
         height: 56vh;
     }
-
-    h2 {
-        margin-top: 70px;
-        font-size: 2rem;
-    }
 }
 
 @media only screen and (min-width: 1224px) {
     .winner {
         width: 45%;
-        height: 56vh;
+        height: 60vh;
     }
 }
