@@ -8,14 +8,14 @@
     overflow: auto;
     background-color: #a5caca;
     border-radius: 5px;
-    transform: scale(0);
+    transform: scaleY(0);
 }
 
 .win {
     transform: scale(1);
-    transition: transform 0.8s;
-    -webkit-transform-origin: right bottom;
-            transform-origin: right bottom;
+    transition: transform 1s;
+    -webkit-transform-origin: top;
+            transform-origin: top;
 }
 
 h2 {

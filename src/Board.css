@@ -9,8 +9,8 @@
 }
 
 .win-b{
-    transform: scale(0);
+    transform: scaleY(0);
     transition: transform 1s;
-    -webkit-transform-origin: left top;
-            transform-origin: left top;
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
 }
