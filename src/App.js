@@ -61,7 +61,7 @@ class App extends Component {
 
     checkTie () {
         if (this.state.winner === null && this.state.cells.every(cell => cell !== '')) {
-            this.setState({ winner: 'Tie! No'})
+            this.setState({ winner: 'tie'})
         };
     };
 
