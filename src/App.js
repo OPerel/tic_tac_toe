@@ -120,25 +120,27 @@ class App extends Component {
         return (
             <div className="App">
                 <Header currentPlayer={this.state.turn} score={this.state.score} />
-                <Board winner={this.state.winner}>
-                    {
-                        cells.map((cell, i) => {
-                            return (
-                                <Cell
-                                key={i}
-                                num={i}
-                                cellContent={cell}
-                                onClicking={() => this.onClickCell(i)}
-                                />
-                            );
-                        })
-                    }
-                </Board>
-                <Winner
-                click={this.clearBoard.bind(this)}
-                winner={this.state.winner}
-                buttonText="Play Again"
-                />
+                <div className="board-container">
+                    <Board winner={this.state.winner}>
+                        {
+                            cells.map((cell, i) => {
+                                return (
+                                    <Cell
+                                    key={i}
+                                    num={i}
+                                    cellContent={cell}
+                                    onClicking={() => this.onClickCell(i)}
+                                    />
+                                );
+                            })
+                        }
+                    </Board>
+                    <Winner
+                    click={this.clearBoard.bind(this)}
+                    winner={this.state.winner}
+                    buttonText="Play Again"
+                    />
+                </div>
                 <Button click={this.clearBoard.bind(this)} text="Reset Board" />
                 <Button click={this.resetBoard.bind(this)} text="Reset Game!" />
             </div>
