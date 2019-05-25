@@ -1,6 +1,6 @@
 import React from 'react';
 import './Winner.css';
-import Button from './Button';
+import { Button, TYPES } from './Button';
 
 const Winner = ({ winner, click, buttonText }) => {
     return (
@@ -11,7 +11,7 @@ const Winner = ({ winner, click, buttonText }) => {
                 </span>
                 {winner !== 'tie' ? ' Player wins!' : 'Tie! No player wins.'}
             </h2>
-            <Button click={click} text={buttonText} />
+            <Button click={click} text={buttonText} btnType={TYPES.WIN} />
         </div>
     );
 };

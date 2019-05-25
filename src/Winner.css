@@ -1,7 +1,7 @@
 .winner {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -18,7 +18,7 @@
             transform-origin: top;
 }
 
-h2 {
-    margin-top: 40px;
+.winner h2 {
+    margin-top: -50px;
     font-size: 2rem;
 }

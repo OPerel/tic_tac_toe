@@ -1,8 +1,19 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ click, text }) => {
-    return <button type="button" onClick={click}>{text}</button>
+export const TYPES = {
+    PRIMARY: 'primary-btn',
+    WIN: 'win-btn'
+}
+
+export const Button = ({ click, text, btnType }) => {
+    return (
+        <button
+        type="button"
+        onClick={click}
+        className={btnType || TYPES.PRIMARY}
+        >{text}</button>
+    )
 };
 
-export default Button;
+// export Button;

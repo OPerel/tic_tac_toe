@@ -1,4 +1,4 @@
-button {
+.primary-btn {
     margin: 20px;
     padding: 10px 40px;
     background-color: #ff9c49;
@@ -10,14 +10,39 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
+.primary-btn:hover {
     cursor: pointer;
     background-color: #053f43;
     color: #81aaaa;
 }
 
-@media only screen and (min-height: 400px) {
-    button {
-        margin: 30px;
-    }
+.win-btn {
+    width: 70%;
+    margin: 0 auto;
+    padding: 30px 0;
+    background-color: #795548;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    color: #b9b9b9;
+    font-size: 1.3rem;
+    font-family: monospace;
+    transition: 0.3s;
 }
+
+.win-btn:hover {
+    cursor: pointer;
+    background-color: #053f43;
+    color: #81aaaa;
+}
+
+/* @media only screen and (min-height: 400px) {
+    .primary-btn {
+        margin: 0;
+    }
+
+    .win-btn {
+        width: 50%;
+        margin: 0 auto;
+    }
+} */

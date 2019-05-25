@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Header from './Header';
-import Button from './Button';
+import { Button } from './Button';
 import Board from './Board';
 import Cell from './Cell';
 import Winner from './Winner';
