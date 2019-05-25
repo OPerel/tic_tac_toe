@@ -3,7 +3,7 @@ import './Board.css';
 
 const Board = (props) => {
     return (
-        <div id="b" className={props.winner ? "hide board" : "board"}>
+        <div id="b" className={props.winner ? "board win" : "board"}>
             {props.children}
         </div>
     );
