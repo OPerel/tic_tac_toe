@@ -11,4 +11,5 @@
 .win-b{
     transform: scale(0);
     transition: transform 1s;
+    transform-origin: left top;
 }
