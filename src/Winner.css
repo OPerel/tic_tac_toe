@@ -14,7 +14,8 @@
 .win {
     transform: scale(1);
     transition: transform 0.8s;
-    transform-origin: right bottom;
+    -webkit-transform-origin: right bottom;
+            transform-origin: right bottom;
 }
 
 h2 {
