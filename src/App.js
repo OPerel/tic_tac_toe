@@ -134,7 +134,11 @@ class App extends Component {
                         })
                     }
                 </Board>
-                <Winner click={this.clearBoard.bind(this)} winner={this.state.winner} buttonText="Play Again" />
+                <Winner
+                click={this.clearBoard.bind(this)}
+                winner={this.state.winner}
+                buttonText="Play Again"
+                />
                 <Button click={this.clearBoard.bind(this)} text="Reset Board" />
                 <Button click={this.resetBoard.bind(this)} text="Reset Game!" />
             </div>

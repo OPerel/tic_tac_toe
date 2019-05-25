@@ -8,6 +8,7 @@
     display: inline-block;
     min-width: 25px;
     height: 25px;
+    margin-right: 10px;
     border-radius: 3px;
     font-family: monospace;
     background-color: #a5caca;
