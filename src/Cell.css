@@ -11,11 +11,11 @@ p {
     border-bottom: solid 1.5px #008686;
 }
 
-.cell:nth-child(3n+0) {
+.cell:nth-child(3n) {
     border-right: none;
 }
 
-.cell:nth-child(1n+7) {
+.cell:nth-child(n+7) {
     border-bottom: none;
 }
 
