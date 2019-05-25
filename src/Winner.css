@@ -9,19 +9,25 @@
     background-color: #a5caca;
     border-radius: 10px;
     transform: scaleY(0);
-    transition: transform 1s;
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    transition: transform 0.8s;
+    /* -webkit-transform-origin: top;
+            transform-origin: top; */
 }
 
 .win {
     transform: scale(1);
-    transition: transform 1s;
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    transition: transform 0.8s 0.8s;
+    /* -webkit-transform-origin: top;
+            transform-origin: top; */
 }
 
 .winner h2 {
     margin-top: -50px;
-    font-size: 2rem;
+    font-size: 1.2rem;
+}
+
+@media only screen and (min-height: 400px) {
+    .winner h2 {
+        font-size: 2rem;
+    }
 }

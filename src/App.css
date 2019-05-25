@@ -10,41 +10,34 @@
 .board-container {
     position: relative;
     margin: 20px auto;
-    width: 80%;
-    height: 40vh;
+    width: 65vw;
+    height: 65vw;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 450px) {
     .board-container {
-        width: 65%;
-        height: 45vh;
+        width: 55vw;
+        height: 55vw;
     }
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 770px) {
     .board-container {
-        width: 55%;
-        height: 50vh;
+        margin: 2% auto;
     }
 }
 
-@media only screen and (min-width:700px) {
+@media only screen and (min-width: 840px) {
     .board-container {
-        width: 55%;
-        height: 50vh;
+        width: 420px;
+        height: 420px;
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (max-height: 420px) {
     .board-container {
-        width: 50%;
-        height: 56vh;
-    }
-}
-
-@media only screen and (min-width: 1224px) {
-    .board-container {
-        width: 45%;
-        height: 60vh;
+        width: 35vw;
+        height: 35vw;
+        margin: 10px auto;
     }
 }

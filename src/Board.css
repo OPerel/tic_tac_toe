@@ -6,14 +6,14 @@
     width: 100%;
     height: 100%;
     transform: scale(1);
-    transition: transform 1s;
-    -webkit-transform-origin: bottom;
-            transform-origin: bottom;
+    transition: transform 0.8s 0.8s;
+    /* -webkit-transform-origin: bottom;
+            transform-origin: bottom; */
 }
 
 .win-b{
     transform: scaleY(0);
-    transition: transform 1s;
-    -webkit-transform-origin: bottom;
-            transform-origin: bottom;
+    transition: transform 0.8s;
+    /* -webkit-transform-origin: bottom;
+            transform-origin: bottom; */
 }
