@@ -9,6 +9,9 @@
     background-color: #a5caca;
     border-radius: 10px;
     transform: scaleY(0);
+    transition: transform 1s;
+    -webkit-transform-origin: top;
+            transform-origin: top;
 }
 
 .win {
