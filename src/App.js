@@ -26,7 +26,6 @@ class App extends Component {
         if (this.state.cells[i] === '') {
             this.changeCellValue(i);
             this.checkForWin();
-            // this.checkTie();
             this.togglePlayer();
         };
     };
@@ -60,17 +59,16 @@ class App extends Component {
         });
     };
 
-    // checkTie () {
-    //     // Not working for a win in the last move.
-    //     if (this.state.winner === null && this.state.cells.every(cell => cell !== '')) {
-    //         this.setState({ winner: 'Tie! No'})
-    //     };
-    // };
+    checkTie () {
+        if (this.state.winner === null && this.state.cells.every(cell => cell !== '')) {
+            this.setState({ winner: 'Tie! No'})
+        };
+    };
 
     togglePlayer () {
         this.setState(state => {
             return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
-        });
+        }, () => this.checkTie());
     };
 
     announceWinner () {
