@@ -1,0 +1,43 @@
+.primary-btn {
+  margin: 20px;
+  padding: 10px 40px;
+  background-color: #ff9c49;
+  border: none;
+  outline: none;
+  color: #5f1a00;
+  font-size: 1.3rem;
+  font-family: monospace;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  cursor: pointer;
+  background-color: #053f43;
+  color: #81aaaa;
+}
+
+.win-btn {
+  width: 70%;
+  margin: 0 auto;
+  padding: 30px 0;
+  background-color: #795548;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: #b9b9b9;
+  font-size: 1.3rem;
+  font-family: monospace;
+  transition: 0.3s;
+}
+
+.win-btn:hover {
+  cursor: pointer;
+  background-color: #053f43;
+  color: #81aaaa;
+}
+
+@media only screen and (min-width: 400px) {
+  .win-btn {
+    width: 50%;
+  }
+}
