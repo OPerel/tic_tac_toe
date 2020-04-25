@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -6,38 +6,37 @@ import Button from './components/Button/Button';
 import Board from './components/Board/Board';
 import Winner from './components/Winner/Winner';
 
-class App extends Component {
-  constructor () {
-    super ();
-    this.state = {
-      turn: 'X',
-      score: {xScore: 0, oScore: 0},
-      winner: null,
-      cells: [
-        '', '', '',
-        '', '', '',
-        '', '', ''
-      ]
+const App = () => {
+
+  const [ turn, setTurn ] = useState('X');
+  const [ score, setScore ] = useState({ xScore: 0, oScore: 0 });
+  const [ winner, setWinner ] = useState(null);
+  const [ cells, setCells ] = useState([
+    '', '', '',
+    '', '', '',
+    '', '', ''
+  ]);
+
+  const onClickCell = (i) => {
+    if (cells[i] === '') {
+      changeCellValue(i);
+      checkForWin();
+      togglePlayer();
     };
   };
 
-  onClickCell (i) {
-    if (this.state.cells[i] === '') {
-      this.changeCellValue(i);
-      this.checkForWin();
-      this.togglePlayer();
-    };
+  const togglePlayer = () => {
+    const nextTurn = turn === 'X' ? 'O' : 'X';
+    setTurn(nextTurn);
+    checkTie();
   };
 
-  changeCellValue (i) {
-    const con = this.state.turn;
-    let currentBoard = this.state.cells;
-    currentBoard.splice(i, 1, con);
-    this.setState({ cells: currentBoard })
+  const changeCellValue = (i) => {
+    cells.splice(i, 1, turn);
+    setCells(cells)
   };
 
-  checkForWin () {
-    const cells = this.state.cells;
+  const checkForWin = () => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -51,74 +50,60 @@ class App extends Component {
     lines.forEach(line => {
       let [a, b, c] = line;
       if (cells[a] === cells[b] && cells[a] === cells[c] && cells[a] !== "") {
-        this.updateScores()
-        this.announceWinner();
+        announceWinner();
         return;
       };
     });
   };
 
-  checkTie () {
-    if (this.state.winner === null && this.state.cells.every(cell => cell !== '')) {
-      this.setState({ winner: 'tie'})
+  const checkTie = () => {
+    if (winner === null && cells.every(cell => cell !== '')) {
+      setWinner('tie')
     };
   };
 
-  togglePlayer () {
-    this.setState(state => {
-      return state.turn === 'X' ? state.turn = 'O' : state.turn = 'X';
-    }, () => this.checkTie());
+  const announceWinner = () => {
+    let { xScore, oScore } = score;
+    const newScore = {
+      xScore: turn === 'X' ? xScore =+ 1 : xScore,
+      oScore: turn === 'O' ? oScore =+ 1 : oScore 
+    }
+    setScore(newScore);
+    setWinner(turn);
   };
 
-  announceWinner () {
-    this.setState({winner: this.state.turn});
-  };
-
-  updateScores () {
-    const winner = this.state.turn;
-    this.setState(state => winner === 'X' ? state.score.xScore += 1 : state.score.oScore += 1);
-  };
-
-  board = (reset) => {
-    const { score } = this.state;
-    this.setState(
-      {
-        turn: 'X',
-        score: reset ? { xScore: 0, oScore: 0 } : score,
-        winner: null,
-        cells: [
-          '', '', '',
-          '', '', '',
-          '', '', ''
-        ]
-      }
-    );
+  const board = (reset) => {
+    setTurn('X');
+    setScore(prevScore => reset ? { xScore: 0, oScore: 0 } : prevScore);
+    setWinner(null);
+    setCells([
+      '', '', '',
+      '', '', '',
+      '', '', ''
+    ]);
     document.getElementById('b').classList.remove('hide');
     document.getElementById('w').classList.add('hide');
   };
 
-  render () {
-    const { cells } = this.state;
-    return (
-      <div className="App">
-        <Header currentPlayer={this.state.turn} score={this.state.score} />
-        <div className="board-container">
-          <Board
-            cells={cells}
-            onClickCell={(i) => this.onClickCell(i)}
-            winner={this.state.winner}
-          />
-          <Winner
-            click={() => this.board(false)}
-            winner={this.state.winner}
-            buttonText="Play Again"
-          />
-        </div>
-        <Button click={() => this.board(false)} text="Reset Board" />
-        <Button click={() => this.board(true)} text="Reset Game!" />
+  return (
+    <div className="App">
+      <Header currentPlayer={turn} score={score} />
+      <div className="board-container">
+        <Board
+          cells={cells}
+          onClickCell={(i) => onClickCell(i)}
+          winner={winner}
+        />
+        <Winner
+          click={() => board(false)}
+          winner={winner}
+          buttonText="Play Again"
+        />
       </div>
-    )
-  };
+      <Button click={() => board(false)} text="Reset Board" />
+      <Button click={() => board(true)} text="Reset Game!" />
+    </div>
+  )
 };
 
 export default App;
