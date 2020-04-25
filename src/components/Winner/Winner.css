@@ -9,14 +9,14 @@
   background-color: #a5caca;
   border-radius: 10px;
   transform: scaleY(0);
-  transition: transform 0.8s;
+  transition: transform var(--transitionDuration);
   /* -webkit-transform-origin: top;
           transform-origin: top; */
 }
 
 .win {
   transform: scale(1);
-  transition: transform 0.8s 0.8s;
+  transition: transform var(--transitionDuration) var(--transitionDuration);
   /* -webkit-transform-origin: top;
           transform-origin: top; */
 }

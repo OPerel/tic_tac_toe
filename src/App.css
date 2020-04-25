@@ -1,43 +1,47 @@
+:root {
+  --transitionDuration: 0.5s;
+}
+
 .App {
-    margin: 0 10%;
-    height: 100vh;
-    overflow: auto;
-    text-align: center;
-    color: #008686;
-    background-color: #c1cdfa;
+  margin: 0 10%;
+  height: 100vh;
+  overflow: auto;
+  text-align: center;
+  color: #008686;
+  background-color: #c1cdfa;
 }
 
 .board-container {
-    position: relative;
-    margin: 20px auto;
-    width: 65vw;
-    height: 65vw;
+  position: relative;
+  margin: 20px auto;
+  width: 65vw;
+  height: 65vw;
 }
 
 @media only screen and (min-width: 450px) {
-    .board-container {
-        width: 55vw;
-        height: 55vw;
-    }
+  .board-container {
+    width: 55vw;
+    height: 55vw;
+  }
 }
 
 @media only screen and (min-width: 770px) {
-    .board-container {
-        margin: 2% auto;
-    }
+  .board-container {
+    margin: 2% auto;
+  }
 }
 
 @media only screen and (min-width: 840px) {
-    .board-container {
-        width: 370px;
-        height: 370px;
-    }
+  .board-container {
+    width: 370px;
+    height: 370px;
+  }
 }
 
 @media only screen and (max-height: 420px) {
-    .board-container {
-        width: 35vw;
-        height: 35vw;
-        margin: 10px auto;
-    }
+  .board-container {
+    width: 35vw;
+    height: 35vw;
+    margin: 10px auto;
+  }
 }
